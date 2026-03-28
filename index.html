@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación Especial</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#fdf6f0,#ffe8ec);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:520px;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+text-align:center;
+animation:fadeIn .6s ease;
+}
+
+.title{
+font-family:'Playfair Display',serif;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.question{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+button{
+border:none;
+padding:12px 24px;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+transition:all .25s ease;
+}
+
+#yesBtn{
+background:#ff7aa2;
+color:white;
+font-weight:600;
+}
+
+#noBtn{
+background:#eee;
+}
+
+.details{
+text-align:left;
+margin:25px 0;
+line-height:1.8;
+font-size:16px;
+}
+
+.highlight{
+font-weight:600;
+}
+
+.footer{
+margin-top:25px;
+font-size:15px;
+color:#444;
+}
+
+.heart{
+font-size:28px;
+margin:10px 0;
+}
+
+.hidden{
+display:none;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+/* Mobile adjustments */
+@media (max-width:480px){
+.title{
+font-size:26px;
+}
+
+.question{
+font-size:18px;
+}
+
+button{
+width:120px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- PREGUNTA -->
+<div class="card" id="questionCard">
+
+<div class="title">Pregunta Importante ☕</div>
+
+<div class="question">¿Quieres ir a un desayuno de señoras conmigo?</div>
+
+<div class="buttons">
+<button id="yesBtn">Sí</button>
+<button id="noBtn">No</button>
+</div>
+
+</div>
+
+
+<!-- INVITACIÓN -->
+<div class="card hidden" id="inviteCard">
+
+<div class="title">Invitación Especial</div>
+<div>Tengo el placer de invitarte a un momento especial juntos</div>
+
+<div class="heart">☕💐</div>
+
+<div class="details">
+<div><span class="highlight">Fecha:</span> 28 de marzo</div>
+<div><span class="highlight">Lugar:</span> Bonanza La Ponderosa, Tecpán</div>
+<div><span class="highlight">Hora de salida:</span> 7:30 - 8:00 AM</div>
+<div><span class="highlight">Temática:</span> Desayuno de Señoras</div>
+</div>
+
+<div class="footer">
+Espero que aceptes esta invitación para compartir una mañana bonita juntos.
+<div>¡TE AMO! ❤️</div>
+</div>
+
+
+</div>
+
+</div>
+
+<script>
+
+let yesSize = 1;
+let noSize = 1;
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("click", ()=>{
+
+noSize -= 0.15;
+yesSize += 0.15;
+
+if(noSize < 0.2){
+noBtn.style.display = "none";
+}
+
+noBtn.style.transform = `scale(${noSize})`;
+yesBtn.style.transform = `scale(${yesSize})`;
+
+});
+
+
+// cuando presione SI
+
+yesBtn.addEventListener("click", ()=>{
+
+document.getElementById("questionCard").classList.add("hidden");
+
+document.getElementById("inviteCard").classList.remove("hidden");
+
+window.scrollTo({
+ top:0,
+ behavior:"smooth"
+});
+
+});
+
+</script>
+
+</body>
+</html>
